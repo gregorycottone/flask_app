@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 from bs4 import BeautifulSoup
 import requests
-import urllib.request, json
+import urllib.request
+import json
 import cgi
 from math import log
 import re
@@ -9,7 +10,8 @@ import spacy
 import ssl
 
 
-# Use this command if you want to run this flask application from terminal: python3 -m flask run --host=0.0.0.0
+# Use this command if you want to run this flask application from 
+# terminal: python3 -m flask run --host=0.0.0.0
 
 
 # ssl._create_default_https_context = ssl._create_stdlib_context
@@ -23,7 +25,9 @@ words = open("words-by-frequency.txt").read().split()
 food_words = open("food.txt").read().split()
 nlp = spacy.load("en_core_web_sm")
 
+
 def classify_edible(item):
+
     # edible_keywords = [
     #     'food', 'edible', 'eat', 'consume', 'taste', 'ingest', 'nutrition',
     #     'digest', 'swallow', 'nourishment', 'snack', 'meal', 'drink'
@@ -43,6 +47,7 @@ def is_noun(string):
             return True
 
     return False
+    
 
 def best_match(i, s):
         wordcost = dict((k, log((i+1)*log(len(words)))) for i,k in enumerate(words))
