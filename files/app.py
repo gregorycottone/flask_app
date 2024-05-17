@@ -2,18 +2,22 @@ from flask import Flask, render_template, request
 from bs4 import BeautifulSoup
 import requests
 import urllib.request, json
-import cgi, cgitb
-import numpy as np
-import pandas as pd
-from cleantext import clean
+import cgi
 from math import log
 import re
 import spacy
 import ssl
-ssl._create_default_https_context = ssl._create_stdlib_context
+
+
+# Use this command if you want to run this flask application from terminal: python3 -m flask run --host=0.0.0.0
+
+
+# ssl._create_default_https_context = ssl._create_stdlib_context
+ssl._create_default_https_context = ssl._create_unverified_context
 app = Flask(__name__)
 
-forms=cgi.FieldStorage()
+
+forms = cgi.FieldStorage()
 
 words = open("words-by-frequency.txt").read().split()
 food_words = open("food.txt").read().split()
@@ -155,7 +159,7 @@ def result():
         url = request.form.get("url")
 
         if url:
-            response = requests.get(url)
+            response = requests.get(url, verify=False)
             diet = request.form.get("dietary-restriction")
 
             html_content = response.content
