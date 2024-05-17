@@ -1,5 +1,8 @@
 # recipe-image
 
+Tutorial Link: https://developers.redhat.com/articles/2023/09/05/beginners-guide-python-containers#
+GitHub repository: https://github.com/ainekeenan/recipe-image
+
 Application for a Recipe website -> finds other recipes with similar rare ingredients
 
 
