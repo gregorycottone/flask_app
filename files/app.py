@@ -47,7 +47,7 @@ def is_noun(string):
             return True
 
     return False
-    
+
 
 def best_match(i, s):
         wordcost = dict((k, log((i+1)*log(len(words)))) for i,k in enumerate(words))
@@ -181,5 +181,4 @@ def result():
         return render_template('invalid.html')
 
 if __name__ == '__main__':
-        app.run()
-
+    app.run()
